@@ -4,6 +4,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 const app = express();
 
+const PORT = process.env.PORT || 3001;
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const comments = [];
@@ -25,6 +27,6 @@ app.post('/comment', (req, res) => {
 });
 
 
-app.listen(3001, () =>
+app.listen(PORT, () =>
   console.log('Express server is running on localhost:3001')
 );
