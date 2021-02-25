@@ -59,7 +59,10 @@ const [comments, setComments] = useState([]);
     >
       <Form style={{width: '450px'}} onSubmit={handleSubmitComment}>
         <Form.Control
-          style={{margin: '20px 0'}}
+          style={{
+            margin: '20px 0',
+            textAlign: 'center'
+          }}
           id="name"
           type="text"
           value={name}
@@ -68,6 +71,9 @@ const [comments, setComments] = useState([]);
           required
         />
         <Form.Control
+          style={{
+            textAlign: 'center'
+          }}
           id="comment"
           type="text"
           value={comment}
