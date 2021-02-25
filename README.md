@@ -1,5 +1,5 @@
 - Instructions:
   - clone project
   - npm install
-  - open server folder and run nodemon index.js
+  - open server folder and run nodemon -r esm index.js
   - then open new terminal and open root folder and run npm start
