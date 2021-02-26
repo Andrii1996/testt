@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getComments, setComment as saveComment } from "./api/getComment";
+import { getComments, setComment as saveComment, deleteCommentById } from "./api/getComment";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, Card, ListGroup } from 'react-bootstrap';
 
@@ -11,14 +11,13 @@ const [comments, setComments] = useState([]);
 
   async function getAllComments() {
     const data = await getComments();
-
     if (!data) return;
     setComments(data);
   }
 
   useEffect(() => {
     getAllComments();
-  }, []);
+  }, [comments]);
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -37,17 +36,13 @@ const [comments, setComments] = useState([]);
       console.error(e)
     }
 
-    if (name.length < 1) {
-      return;
-    }
-
-    getAllComments()
+    getAllComments();
 
     setComment('');
   }
 
   const deleteComment = id => {
-    setComments(comments.filter(comment => comment.id !== id));
+    deleteCommentById(id);
   }
 
   return (
@@ -107,7 +102,7 @@ const [comments, setComments] = useState([]);
               alignItems: 'center'
             }}>
               {`${el.name} : ${el.comment}`}
-              <Button onClick={() => deleteComment(el.id)}>Delete</Button>
+              <Button variant="danger" onClick={() => deleteComment(el.id)}>Delete</Button>
               </ListGroup.Item>
           ))}
         </ListGroup >

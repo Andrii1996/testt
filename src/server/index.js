@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const comments = [];
+let comments = [];
 
 app.get('/comments', (req, res) => {
 
@@ -24,6 +24,17 @@ app.post('/comment', (req, res) => {
   }
   res.setHeader('Content-Type', 'application/json');
   res.sendStatus(200)
+});
+
+app.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  if (id) {
+    comments = comments.filter(comment => {
+      return comment.id !== id;
+    });
+  }
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(comments));
 });
 
 

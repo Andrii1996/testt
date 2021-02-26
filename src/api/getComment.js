@@ -12,10 +12,19 @@ export async function setComment(comment) {
 
 export async function getComments() {
   let resp = await fetch(`/comments`)
-
+  console.log('resp - ', resp.ok);
   if (!resp.ok) {
     throw new Error('did not get all comments');
   }
 
   return resp.json();
+}
+
+export async function deleteCommentById(id) {
+  
+  await fetch(`${id}`, {
+    method: 'DELETE',
+  })
+  .then(res => res.text())
+  .then(res => res)
 }
