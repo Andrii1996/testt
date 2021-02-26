@@ -20,7 +20,6 @@ const [comments, setComments] = useState([]);
     getAllComments();
   }, []);
 
-
   const handleChangeName = (event) => {
     setName(event.target.value);
   }
@@ -45,6 +44,10 @@ const [comments, setComments] = useState([]);
     getAllComments()
 
     setComment('');
+  }
+
+  const deleteComment = id => {
+    setComments(comments.filter(comment => comment.id !== id));
   }
 
   return (
@@ -98,7 +101,14 @@ const [comments, setComments] = useState([]);
           flexDirection: 'column-reverse'
         }}>
           {comments.map(el => (
-            <ListGroup.Item key={el.id}>{`${el.name} : ${el.comment}`}</ListGroup.Item>
+            <ListGroup.Item key={el.id} style={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center'
+            }}>
+              {`${el.name} : ${el.comment}`}
+              <Button onClick={() => deleteComment(el.id)}>Delete</Button>
+              </ListGroup.Item>
           ))}
         </ListGroup >
       </Card>
