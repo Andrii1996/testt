@@ -12,6 +12,7 @@ const [comments, setComments] = useState([]);
   async function getAllComments() {
     const data = await getComments();
     if (!data) return;
+    if (comments.length === data.length) return;
     setComments(data);
   }
 
