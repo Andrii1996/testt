@@ -2,7 +2,9 @@ import uuidv4 from "./src/helper/uuid";
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 const app = express();
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
