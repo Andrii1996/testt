@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 let comments = [];
 
-app.get('/', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(comments));
-})
+// app.get('/', (req, res) => {
+//   res.setHeader('Content-Type', 'application/json');
+//   res.end(JSON.stringify(comments));
+// })
 
-app.get('/comments', (req, res) => {
+app.get('/', (req, res) => {
 
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(comments));
