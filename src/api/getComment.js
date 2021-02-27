@@ -12,7 +12,6 @@ export async function setComment(comment) {
 
 export async function getComments() {
   let resp = await fetch(`/comments`)
-  console.log('resp - ', resp.ok);
   if (!resp.ok) {
     throw new Error('did not get all comments');
   }
