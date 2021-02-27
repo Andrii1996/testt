@@ -15,9 +15,7 @@
     "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
-    "web-vitals": "^0.2.4",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,7 +23,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node server --exec nodemon",
-    "dev": "run-p server start"
+    "dev": "run-p server start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
