@@ -1,8 +1,10 @@
-import uuidv4 from "../helper/uuid";
+import uuidv4 from "./src/helper/uuid";
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 const app = express();
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
@@ -10,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 let comments = [];
 
-app.get('/comments', (req, res) => {
+app.get('/', (req, res) => {
 
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(comments));
