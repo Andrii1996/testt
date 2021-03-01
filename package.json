@@ -3,7 +3,7 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://secret-ridge-19583.herokuapp.com/comments",
+  "proxy": "https://secret-ridge-19583.herokuapp.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -19,7 +19,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "node -r esm index.js",
+    "start": "nodemon -r esm index.js",
     "front": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
