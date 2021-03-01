@@ -2,10 +2,10 @@ import uuidv4 from "./src/helper/uuid";
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
+// import path from 'path';
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static("public"));
 
 const PORT = process.env.PORT || 3001;
 
