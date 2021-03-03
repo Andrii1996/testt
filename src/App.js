@@ -8,6 +8,8 @@ export function App() {
 const [name, setName] = useState('');
 const [comment, setComment] = useState('');
 const [comments, setComments] = useState([]);
+const [message, setMessage] = useState(comment);
+const [id, setId] = useState('nul');
 
   async function getAllComments() {
     const data = await getComments();
@@ -17,7 +19,7 @@ const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getAllComments();
-  }, [comments]);
+  }, [id, message]);
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -36,13 +38,14 @@ const [comments, setComments] = useState([]);
       console.error(e)
     }
 
-    getAllComments();
+    setMessage(comment);
 
     setComment('');
-  }
+  };
 
   const deleteComment = id => {
     deleteCommentById(id);
+    setId(id);
   }
 
   return (
