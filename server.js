@@ -2,6 +2,7 @@ import uuidv4 from "./src/helper/uuid";
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from "path";
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -13,6 +14,10 @@ let comments = [{
   "comment": "Hello",
   "id": "1"
 }];
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+ });
 
 app.get('/comments', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
