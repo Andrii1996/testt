@@ -1,1 +1,1 @@
-web: node -r esm server.js
+web: react-scripts start
