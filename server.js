@@ -2,22 +2,24 @@ import uuidv4 from "./src/helper/uuid";
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from "cors";
 const app = express();
 
 const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-let comments = [];
+let comments = [{
+  "name": "Andrii",
+  "comment": "Hello",
+  "id": "1"
+}];
 
-app.get('/', cors(), (req, res) => {
-
+app.get('/comments', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(comments));
 });
 
-app.post('/comment', cors(), (req, res) => {
+app.post('/comment', (req, res) => {
   const comment = req.body;
   const id = uuidv4();
   if(comment) {
@@ -27,7 +29,7 @@ app.post('/comment', cors(), (req, res) => {
   res.sendStatus(200)
 });
 
-app.delete('/:id', cors(), (req, res) => {
+app.delete('/:id', (req, res) => {
   const id = req.params.id;
   if (id) {
     comments = comments.filter(comment => {

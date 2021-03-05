@@ -8,8 +8,7 @@ export function App() {
 const [name, setName] = useState('');
 const [comment, setComment] = useState('');
 const [comments, setComments] = useState([]);
-const [message, setMessage] = useState(comment);
-const [id, setId] = useState('nul');
+const [toggle, setToggle] = useState(false);
 
   async function getAllComments() {
     const data = await getComments();
@@ -19,7 +18,7 @@ const [id, setId] = useState('nul');
 
   useEffect(() => {
     getAllComments();
-  }, [id, message]);
+  }, [toggle]);
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -38,14 +37,14 @@ const [id, setId] = useState('nul');
       console.error(e)
     }
 
-    setMessage(comment);
+    setToggle(!toggle);
 
     setComment('');
   };
 
   const deleteComment = id => {
     deleteCommentById(id);
-    setId(id);
+    setToggle(!toggle);
   }
 
   return (
